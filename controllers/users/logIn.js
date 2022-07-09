@@ -1,8 +1,9 @@
-const { User } = require("../../models");
+const { Unauthorized } = require("http-errors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const { User } = require("../../models");
 const { JSONWEBTOKEN_SECRET_KEY } = process.env;
-const { Unauthorized } = require("http-errors");
 
 const logIn = async (req, res) => {
   const { email, password } = req.body;
