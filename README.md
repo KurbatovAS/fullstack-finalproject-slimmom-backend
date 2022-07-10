@@ -70,7 +70,17 @@ Responses:
 
 ---
 
-- GET api/products?bloodGroup="x" - отримати список нерекомендованих продуктів для "х" групи крові
+- GET api/products/search?product=Абрикосова кісточка - отримати інформацію по продутку
+  Parameters:
+  No body
+
+Responses:
+
+200 - інформацію знайдено
+
+---
+
+- GET api/products?bloodType="x" - отримати список нерекомендованих продуктів для "х" групи крові
   Parameters:
   No body
 
