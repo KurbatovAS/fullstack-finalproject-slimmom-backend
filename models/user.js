@@ -44,6 +44,7 @@ const joiRegisterSchema = Joi.object({
   password: Joi.string()
     .required()
     .alphanum()
+    // eslint-disable-next-line prefer-regex-literals
     .pattern(new RegExp("^[a-zA-Z0-9]{8,100}$")),
 });
 
@@ -59,6 +60,7 @@ const joiLoginSchema = Joi.object({
   password: Joi.string()
     .required()
     .alphanum()
+    // eslint-disable-next-line prefer-regex-literals
     .pattern(new RegExp("^[a-zA-Z0-9]{8,100}$")),
 });
 
