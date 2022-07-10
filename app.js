@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const usersRouter = require("./routes/api/users");
 const productsRouter = require("./routes/api/products");
+// const dailyRouter = require("./routes/api/dailyRate");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
+// app.use("/api/daily/rate", dailyRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
