@@ -86,7 +86,7 @@ Responses:
   No parameters
 
   Request.body required application/json
-  
+
   Example:
   {
   "height": number,
@@ -103,8 +103,50 @@ Example:
 {
 "kcal": 1622,
 "productsNotRecommended": [
-"мясо",
-"мучные",
-"молочные"
+"Азу",
+"Антрекот",
+"Антрекот з яловичини",
+"Антрекот зі свинини",
+"Аньолотті",
+"Арахіс",
+"Арахіс Джаз смажений солоний",
+...,
+]
+}
+
+---
+
+- POST /api/users/private - отримання денної норми ккал та списку нерекомендованих продуктів, записати надану/отриману інформацію у БД
+
+  Parameters:
+  Authorization (header): Bearer token
+
+  Request.body required application/json
+
+  Example:
+  {
+  "height": number,
+  "age": number,
+  "currentWeight": number,
+  "desiredWeight": number,
+  "bloodType": "string"
+  }
+
+Responses:
+
+200 - інформацію знайдено
+Example:
+{
+"kcal": 1622,
+"productsNotRecommended": [
+"Абрикосова кісточка",
+"Азу",
+"Антрекот",
+"Антрекот з яловичини",
+"Антрекот зі свинини",
+"Аньолотті",
+"Арахіс",
+"Арахіс Джаз смажений солоний",
+...,
 ]
 }
