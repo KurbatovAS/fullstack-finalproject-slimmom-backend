@@ -70,10 +70,29 @@ Responses:
 
 ---
 
-- GET api/products?bloodGroup="x" - отримати список нерекомендованих продуктів для "х" групи крові
-  Parameters:
-  No body
+- POST /api/users/public - отримання денної норми ккал та списку нерекомендованих продуктів
+
+  No parameters
+
+  Request.body required application/json
+  Example:
+  {
+  "height": number,
+  "age": number,
+  "currentWeight": number,
+  "desiredWeight": number,
+  "bloodType": "string"
+  }
 
 Responses:
 
 200 - інформацію знайдено
+Example:
+{
+"kcal": 1622,
+"productsNotRecommended": [
+"мясо",
+"мучные",
+"молочные"
+]
+}
