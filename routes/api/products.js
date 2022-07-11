@@ -1,11 +1,11 @@
 const express = require("express");
 
-const { ctrlWrapper } = require("../../middlewares");
+const { ctrlWrapper, searchValidation } = require("../../middlewares");
 const { products: ctrl } = require("../../controllers");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getProductsByBloodGroup));
+router.get("/search", searchValidation, ctrlWrapper(ctrl.searchProduct));
 
 // router.get("/:productsId", async (req, res, next) => {
 //   res.json({ message: "template message" });

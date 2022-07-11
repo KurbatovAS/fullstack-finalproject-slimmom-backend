@@ -70,11 +70,23 @@ Responses:
 
 ---
 
+- GET api/products/search?product=Абрикосова кісточка - отримати інформацію по продутку
+
+  Parameters:
+  No body
+
+Responses:
+
+200 - інформацію знайдено
+
+---
+
 - POST /api/users/public - отримання денної норми ккал та списку нерекомендованих продуктів
 
   No parameters
 
   Request.body required application/json
+  
   Example:
   {
   "height": number,
