@@ -70,7 +70,7 @@ Responses:
 
 ---
 
-- GET api/products/search?product=Абрикосова кісточка - отримати інформацію по продутку
+- GET api/products/search?product=сир - отримати інформацію по продутку
 
   Parameters:
   No body
