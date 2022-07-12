@@ -1,22 +1,20 @@
-const Day = require("../../models/productsPerDate");
+const { addProduct } = require("../../services/getProducts");
 
 const add = async (req, res, next) => {
+  const { id } = req.user;
   try {
-    const {
-      user,
-      body: { productId, weight, date },
-    } = req;
-    const day = new Day({
-      productId,
-      weight,
+    const product = await addProduct(id, req.body);
+    const { _id, date, kcal, weight, title, owner } = product;
+    return res.status(201).json({
+      id: _id,
       date,
-      userId: user._id,
+      kcal,
+      weight,
+      title,
+      owner,
     });
-
-    const savedDay = await day.save();
-    return res.status(201).json(savedDay);
-  } catch (error) {
-    next(error);
+  } catch (e) {
+    next(e);
   }
 };
 
