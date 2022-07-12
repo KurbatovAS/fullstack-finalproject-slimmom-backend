@@ -1,24 +1,30 @@
-const { Day } = require("../../models");
+const { User, Day } = require("../../models/user");
+
+const createNewDay = require("./utils/createNewDay");
+const infoPerDay = async (date, user) => {
+  const userId = user._id;
+
+  try {
+    const user = await User.findById(userId);
+
+    const userDay = user.days.find((day) => day.date === date);
+
+    if (userDay) {
+      return await Day.findById(userDay.id);
+    }
+
+    return await createNewDay(user, date);
+  } catch (error) {
+    console.log("error");
+  }
+};
 
 const getProductsForDay = async (req, res, next) => {
-  try {
-    const { _id } = req.user;
-    const eatenProducts = await Day.find(
-      { owner: _id, date },
-      "-createdAt -updatedAt"
-    ).populate("owner", "name email");
-    res.json({
-      status: "success",
-      code: 200,
-      data: { eatenProducts },
-    });
-  } catch (error) {
-    res.status(500).json({
-      status: "error",
-      code: 500,
-      message: "Server error",
-    });
-  }
+  const { date } = req.body;
+
+  const dayInfo = await infoPerDay(date, req.user);
+
+  return res.status(200).json(dayInfo);
 };
 
 module.exports = getProductsForDay;

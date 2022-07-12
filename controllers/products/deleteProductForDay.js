@@ -1,25 +1,31 @@
 const { Day } = require("../../models");
+const updateCurrentDay = require("./utils/updateCurrentDay");
+
+const deleteProductPerDay = async (dayId, eatenProductId) => {
+  const currentDay = await Day.findById(dayId);
+
+  const { eatenProducts, daySummary } = currentDay;
+
+  const updatedEatenProducts = eatenProducts.filter((product) => {
+    return String(product._id) !== eatenProductId;
+  });
+  const updatedDayData = await updateCurrentDay(
+    dayId,
+    updatedEatenProducts,
+    daySummary
+  );
+  return { updatedDayData, updatedEatenProducts };
+};
 
 const deleteProduct = async (req, res, next) => {
+  const { dayId, eatenProductId } = req.body;
   try {
-    const { productId } = req.params;
-    const result = await Day.findByIdAndRemove(productId);
-
-    if (!result) {
-      res.status(404).json({
-        status: "error",
-        code: 404,
-        message: `Contact with id ${productId} not found`,
-      });
-      return;
-    }
-
-    res.json({
-      status: "success",
-      code: 200,
-      message: "You deleted",
-      data: { result },
-    });
+    const { updatedEatenProducts, updatedDayData } = await deleteProductPerDay(
+      dayId,
+      eatenProductId
+    );
+    const eatenProducts = updatedEatenProducts;
+    return res.status(201).json({ updatedDayData, eatenProducts });
   } catch (error) {
     res.status(500).json({
       status: "error",
