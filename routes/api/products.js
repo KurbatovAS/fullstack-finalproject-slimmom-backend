@@ -1,24 +1,36 @@
 const express = require("express");
-
-const { ctrlWrapper, searchValidation } = require("../../middlewares");
-const { products: ctrl } = require("../../controllers");
-
 const router = express.Router();
 
-router.get("/search", searchValidation, ctrlWrapper(ctrl.searchProduct));
+const {
+  //   auth,
+  ctrlWrapper,
+  searchValidation,
+  deleteProductPerDayValidation,
+  infoPerDayValidation,
+} = require("../../middlewares");
 
-// router.get("/:productsId", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
+const { deleteProductForDay, getInfoPerDay } = require("../../controllers/day");
 
-router.post("/", ctrlWrapper(ctrl.add));
+const { searchProduct, add } = require("../../controllers/products");
 
-router.get("/", ctrlWrapper(ctrl.getProductsForDay));
+router.get("/search", searchValidation, ctrlWrapper(searchProduct));
 
-router.delete("/:productId", ctrlWrapper(ctrl.deleteProductForDay));
+router.post("/", ctrlWrapper(add));
 
-// router.put("/:productId", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
+router.get("/", ctrlWrapper(getInfoPerDay));
+
+router.delete(
+  "/",
+  //   auth,
+  deleteProductPerDayValidation,
+  ctrlWrapper(deleteProductForDay)
+);
+
+router.post(
+  "/info",
+  //   auth,
+  infoPerDayValidation,
+  ctrlWrapper(getInfoPerDay)
+);
 
 module.exports = router;

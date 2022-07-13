@@ -1,5 +1,5 @@
 const { Day } = require("../../models");
-const updateCurrentDay = require("./utils/updateCurrentDay");
+const { updateCurrentDay } = require("../day/utils");
 
 const deleteProductPerDay = async (dayId, eatenProductId) => {
   const currentDay = await Day.findById(dayId);

@@ -1,7 +1,7 @@
-// const getDailyRate = require("./getDailyRate");
-// const getDailyRateByUser = require("./getDailyRateByUser");
+const getDailyRate = require("./getDailyRate");
+const getInfoPerDay = require("./getInfoPerDay");
 
-// module.exports = {
-//   getDailyRate,
-//   getDailyRateByUser,
-// };
+module.exports = {
+  getDailyRate,
+  getInfoPerDay,
+};

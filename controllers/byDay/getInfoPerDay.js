@@ -1,6 +1,6 @@
-const { User, Day } = require("../../models/user");
+const { User, Day } = require("../../models");
+const { createNewDay } = require("./utils");
 
-const createNewDay = require("./utils/createNewDay");
 const infoPerDay = async (date, user) => {
   const userId = user._id;
 
@@ -19,7 +19,7 @@ const infoPerDay = async (date, user) => {
   }
 };
 
-const getProductsForDay = async (req, res, next) => {
+const getInfoPerDay = async (req, res, next) => {
   const { date } = req.body;
 
   const dayInfo = await infoPerDay(date, req.user);
@@ -27,4 +27,4 @@ const getProductsForDay = async (req, res, next) => {
   return res.status(200).json(dayInfo);
 };
 
-module.exports = getProductsForDay;
+module.exports = getInfoPerDay;

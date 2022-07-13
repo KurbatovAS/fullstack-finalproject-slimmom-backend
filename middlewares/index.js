@@ -4,6 +4,8 @@ const auth = require("./auth");
 const dailyRateValidation = require("./dailyRateValidation");
 const calcValidation = require("./calcValidation");
 const searchValidation = require("./searchValidation");
+const deleteProductPerDayValidation = require("./validateDeleteProduct");
+const infoPerDayValidation = require("./validateInfoDay");
 
 module.exports = {
   validation,
@@ -12,4 +14,6 @@ module.exports = {
   dailyRateValidation,
   calcValidation,
   searchValidation,
+  deleteProductPerDayValidation,
+  infoPerDayValidation,
 };

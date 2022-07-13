@@ -1,12 +1,7 @@
 const Day = require("../../../models/day");
 const { calculateDaySummary } = require("./calculateDaySummary");
 
-const findDayByIdAndUpdateDaySummary = async (
-  dayId,
-  daySummary,
-  unique,
-  random
-) => {
+const findDayByIdAndUpdateDaySummary = async (dayId, daySummary) => {
   return await Day.findByIdAndUpdate(
     dayId,
     {

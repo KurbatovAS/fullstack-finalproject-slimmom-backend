@@ -10,10 +10,11 @@ const daySchema = new Schema({
     },
   ],
   date: { type: String, required: true },
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: "user",
-    required: true,
+  daySummary: {
+    kcalLeft: { type: Number, required: true },
+    kcalConsumed: { type: Number, required: true },
+    dailyRate: { type: Number, required: true },
+    percentsOfDailyRate: { type: Number, required: true },
   },
 });
 
