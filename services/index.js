@@ -1,10 +1,10 @@
-const { calc } = require("./calc");
+const { calcKcalories } = require("./calcKcalories");
 const { getProducts } = require("./getProducts");
 const { getProductsByBloodType } = require("./getProductsByBloodType");
 const { getListFoundProducts } = require("./getListFoundProducts");
 
 module.exports = {
-  calc,
+  calcKcalories,
   getProducts,
   getProductsByBloodType,
   getListFoundProducts,

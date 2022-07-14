@@ -1,19 +1,17 @@
 const validation = require("./validation");
 const ctrlWrapper = require("./ctrlWrapper");
 const auth = require("./auth");
-const dailyRateValidation = require("./dailyRateValidation");
-const calcValidation = require("./calcValidation");
 const searchValidation = require("./searchValidation");
-const deleteProductPerDayValidation = require("./validateDeleteProduct");
-const infoPerDayValidation = require("./validateInfoDay");
+const newEntryValidation = require("./newEntryValidation");
+const updateEntryValidation = require("./updateEntryValidation");
+const calcValidation = require("./calcValidation");
 
 module.exports = {
   validation,
   ctrlWrapper,
   auth,
-  dailyRateValidation,
-  calcValidation,
+  newEntryValidation,
   searchValidation,
-  deleteProductPerDayValidation,
-  infoPerDayValidation,
+  updateEntryValidation,
+  calcValidation,
 };

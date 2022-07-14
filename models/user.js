@@ -37,7 +37,6 @@ const userSchema = new Schema(
       notAllowedProducts: { type: Array },
       notAllowedProductsAll: { type: Array },
     },
-    days: { type: Array },
   },
   { versionKey: false, timestamps: true }
 );
