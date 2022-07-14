@@ -1,4 +1,4 @@
-const { calcKcalories } = require("./calcKcalories");
+const { calc } = require("./calc");
 const { getProducts } = require("./getProducts");
 const { getProductsByBloodType } = require("./getProductsByBloodType");
 const { getListFoundProducts } = require("./getListFoundProducts");
@@ -6,7 +6,7 @@ const { getSaveDayNorm } = require("./getSaveDayNorm");
 const { saveNotRecommendedInDb } = require("./saveNotRecommendedInDb");
 
 module.exports = {
-  calcKcalories,
+  calc,
   getProducts,
   getProductsByBloodType,
   getListFoundProducts,

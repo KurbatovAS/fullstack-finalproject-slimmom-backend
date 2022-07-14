@@ -1,17 +1,26 @@
 const express = require("express");
 
+const { ctrlWrapper, searchValidation } = require("../../middlewares");
+const { products: ctrl } = require("../../controllers");
+const { validateAddProduct } = require("../../middlewares/validateAddProduct");
+const { add } = require("../../controllers/products");
+
 const router = express.Router();
 
-const {
-  //   auth,
-  ctrlWrapper,
-  searchValidation,
-} = require("../../middlewares");
+router.get("/search", searchValidation, ctrlWrapper(ctrl.searchProduct));
 
-const { searchProduct, add } = require("../../controllers/products");
+// router.get("/:productsId", async (req, res, next) => {
+//   res.json({ message: "template message" });
+// });
 
-router.get("/search", searchValidation, ctrlWrapper(searchProduct));
+router.post("/", validateAddProduct, add);
 
-router.post("/", ctrlWrapper(add));
+router.get("/", ctrlWrapper(ctrl.getProductsForDay));
+
+router.delete("/:productId", ctrlWrapper(ctrl.deleteProductForDay));
+
+// router.put("/:productId", async (req, res, next) => {
+//   res.json({ message: "template message" });
+// });
 
 module.exports = router;
