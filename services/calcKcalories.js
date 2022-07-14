@@ -1,4 +1,4 @@
-const calc = async (params) => {
+const calcKcalories = async (params) => {
   const { height, age, currentWeight, desiredWeight } = params;
 
   const kcalories =
@@ -11,4 +11,4 @@ const calc = async (params) => {
   return Math.round(kcalories);
 };
 
-module.exports = { calc };
+module.exports = { calcKcalories };

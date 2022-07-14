@@ -27,13 +27,25 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-    dayNorm: {
-      type: String,
-      default: null,
-    },
-    productsNotRecommended: {
-      type: Array,
-      default: null,
+
+    userData: {
+      currentWeight: { type: Number, required: true, default: 0 },
+      height: { type: Number, required: true, default: 0 },
+      age: { type: Number, required: true, default: 0 },
+      desiredWeight: { type: Number, required: true, default: 0 },
+      bloodType: { type: Number, enum: [1, 2, 3, 4], default: 1 },
+      dailyRate: { type: Number, required: true, default: 0 },
+      notAllowedProducts: { type: Array },
+      notAllowedProductsAll: { type: Array },
+
+      // dayNorm: {
+      //   type: String,
+      //   default: null,
+      // },
+      // productsNotRecommended: {
+      //   type: Array,
+      //   default: null,
+
     },
   },
   { versionKey: false, timestamps: true }
