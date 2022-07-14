@@ -3,7 +3,7 @@ const { Product, User } = require("../../models");
 const {
   getDailyLimit,
   getNotRecommendedCategories,
-} = require("../dairyServices");
+} = require("../diaryServices");
 const {
   newEntryValidation,
   updateEntryValidation,

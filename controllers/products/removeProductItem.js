@@ -1,4 +1,4 @@
-const { removeProductItemService } = require("../../services/dairyServices");
+const { removeProductItemService } = require("../../services/diaryServices");
 
 const removeProductItem = async (req, res, next) => {
   const { _id: userId } = req.user;

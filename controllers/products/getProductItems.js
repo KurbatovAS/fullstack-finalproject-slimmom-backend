@@ -1,4 +1,4 @@
-const { getProductItemsService } = require("../../services/dairyServices");
+const { getProductItemsService } = require("../../services/diaryServices");
 
 const getProductItems = async (req, res, next) => {
   const { _id: userId } = req.user;
