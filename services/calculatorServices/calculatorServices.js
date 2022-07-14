@@ -36,13 +36,13 @@ const userCalc = async (body, userID) => {
   }
   if (!userFound.dailyLimit) {
     const target = await publicCalc(body);
-    userFound.currentWeight = body.currentWeight;
-    userFound.height = body.height;
-    userFound.age = body.age;
-    userFound.desiredWeight = body.desiredWeight;
-    userFound.bloodType = body.bloodType;
-    userFound.dailyLimit = target.dailyLimit;
-    userFound.notRecommended = target.notRecommendedCategories;
+    userFound.userData.age = body.age;
+    userFound.userData.currentWeight = body.currentWeight;
+    userFound.userData.height = body.height;
+    userFound.userData.desiredWeight = body.desiredWeight;
+    userFound.userData.bloodType = body.bloodType;
+    userFound.userData.bloodType = target.dailyLimit;
+    userFound.userData.notAllowedProducts = target.notRecommendedCategories;
 
     await userFound.save();
     return target;
@@ -54,8 +54,8 @@ const userCalc = async (body, userID) => {
   const { currentWeight, height, age, desiredWeight, bloodType } = body;
   const dailyLimit = getDailyLimit(
     currentWeight,
-    height || userFound.height,
-    age || userFound.age,
+    height || userFound.userData.height,
+    age || userFound.userData.age,
     desiredWeight
   );
 
@@ -69,13 +69,13 @@ const userCalc = async (body, userID) => {
     const notRecommendedCategories =
       getNotRecommendedCategories(notRecommended);
 
-    userFound.currentWeight = body.currentWeight;
-    userFound.height = body.height || userFound.height;
-    userFound.age = body.age || userFound.age;
-    userFound.desiredWeight = body.desiredWeight;
-    userFound.dailyLimit = dailyLimit;
-    userFound.bloodType = body.bloodType;
-    userFound.notRecommended = notRecommendedCategories;
+    userFound.userData.age = body.age || userFound.userData.age;
+    userFound.userData.currentWeight = body.currentWeight;
+    userFound.userData.height = body.height || userFound.userData.height;
+    userFound.userData.desiredWeight = body.desiredWeight;
+    userFound.userData.bloodType = body.bloodType;
+    userFound.userData.bloodType = dailyLimit;
+    userFound.userData.notAllowedProducts = notRecommendedCategories;
 
     await userFound.save();
     return {
@@ -84,11 +84,11 @@ const userCalc = async (body, userID) => {
     };
   }
 
-  userFound.currentWeight = body.currentWeight;
-  userFound.height = body.height || userFound.height;
-  userFound.age = body.age || userFound.age;
-  userFound.desiredWeight = body.desiredWeight;
-  userFound.dailyLimit = dailyLimit;
+  userFound.userData.currentWeight = body.currentWeight;
+  userFound.userData.height = body.height || userFound.userData.height;
+  userFound.userData.age = body.age || userFound.userData.age;
+  userFound.userData.desiredWeight = body.desiredWeight;
+  userFound.userData.dailyLimit = dailyLimit;
 
   await userFound.save();
   return {
