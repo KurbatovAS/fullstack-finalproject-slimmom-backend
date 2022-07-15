@@ -1,5 +1,4 @@
-const { Product } = require("../models");
-const productsPerDate = require("../models/productsPerDate");
+const { Product, ProductsPerDate } = require("../models");
 
 const getProducts = async () => {
   const products = await Product.find();
@@ -17,7 +16,7 @@ const calcKcal = async (body) => {
 const addProduct = async (userId, body) => {
   const calc = await calcKcal(body);
 
-  return await productsPerDate.create({ ...body, kcal: calc, owner: userId });
+  return await ProductsPerDate.create({ ...body, kcal: calc, owner: userId });
 };
 
 module.exports = { getProducts, addProduct };
