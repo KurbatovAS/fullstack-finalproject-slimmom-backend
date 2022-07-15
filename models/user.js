@@ -35,6 +35,10 @@ const userSchema = new Schema(
       type: Array,
       default: null,
     },
+    isCalculated: {
+      type: Boolean,
+      default: false,
+    },
   },
   { versionKey: false, timestamps: true }
 );

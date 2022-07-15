@@ -9,6 +9,7 @@ const logIn = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
+
   const authorized = bcrypt.compareSync(password, user.password);
 
   if (!user || !authorized) {
@@ -29,6 +30,7 @@ const logIn = async (req, res) => {
         name: user.name,
         email,
       },
+      isCalculated: user.isCalculated,
     },
   });
 };
