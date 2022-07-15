@@ -4,7 +4,6 @@ const {
   getProductsByBloodType,
   saveNotRecommendedInDb,
 } = require("../../services");
-// const getProductsByBloodType = require("../../services");
 
 const getSaveDayNormCalories = async (req, res, next) => {
   const { bloodType } = req.body;
