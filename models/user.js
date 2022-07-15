@@ -35,6 +35,10 @@ const userSchema = new Schema(
       type: Array,
       default: null,
     },
+    desiredWeight: {
+      type: String,
+      default: null,
+    },
     isCalculated: {
       type: Boolean,
       default: false,

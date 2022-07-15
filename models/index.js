@@ -1,5 +1,5 @@
 const { User } = require("./user");
 const { Product } = require("./product");
-const { Day } = require("./day");
+const { ProductsPerDate } = require("./productsPerDate");
 
-module.exports = { User, Product, Day };
+module.exports = { User, Product, ProductsPerDate };

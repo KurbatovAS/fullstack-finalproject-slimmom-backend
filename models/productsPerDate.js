@@ -17,6 +17,6 @@ const dailyNormSchema = new Schema({
   },
 });
 
-const productsPerDate = mongoose.model("productsPerDate", dailyNormSchema);
+const ProductsPerDate = mongoose.model("productsPerDate", dailyNormSchema);
 
-module.exports = productsPerDate;
+module.exports = { ProductsPerDate };

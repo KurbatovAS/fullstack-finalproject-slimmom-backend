@@ -1,8 +1,8 @@
 const { User } = require("../models");
-const { calc } = require("./calc");
+const { calculate } = require("./calculatorServise");
 
 const getSaveDayNorm = async (body, email) => {
-  const dayNorm = await calc(body);
+  const dayNorm = await calculate(body);
   await User.findOneAndUpdate(
     { email },
     {
