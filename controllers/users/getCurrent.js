@@ -1,5 +1,5 @@
 const getCurrent = async (req, res) => {
-  const { name, email } = req.user;
+  const { name, email, isCalculated } = req.user;
 
   res.json({
     status: "success",
@@ -9,6 +9,7 @@ const getCurrent = async (req, res) => {
         name,
         email,
       },
+      isCalculated: isCalculated,
     },
   });
 };
