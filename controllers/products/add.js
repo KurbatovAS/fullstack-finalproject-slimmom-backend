@@ -1,8 +1,10 @@
 const { addProduct } = require("../../services/getProducts");
 
 const add = async (req, res, next) => {
-  const { id } = req.user;
   try {
+    console.log("req.user", req.user);
+    const { id } = req.user;
+
     const product = await addProduct(id, req.body);
     const { _id, date, kcal, weight, title, owner } = product;
     return res.status(201).json({

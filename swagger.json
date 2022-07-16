@@ -440,16 +440,24 @@
       "RegistrationResponse": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "User's name"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email"
+          "user": {
+            "name": {
+              "type": "string",
+              "description": "User's name"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email"
+            }
           }
         },
-        "example": { "name": "User", "email": "user@example.com" }
+
+        "example": {
+          "user": {
+            "name": "User",
+            "email": "user@example.com"
+          }
+        }
       },
 
       "LoginRequest": {
@@ -474,26 +482,30 @@
       "LoginResponse": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "User's name"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email"
-          },
           "token": {
             "type": "string",
             "description": "User's token"
+          },
+          "user": {
+            "name": {
+              "type": "string",
+              "description": "User's name"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email"
+            }
           },
           "isCalculated": {
             "type": "boolean"
           }
         },
         "example": {
-          "name": "User",
-          "email": "user@example.com",
           "token": "JWT",
+          "user": {
+            "name": "User",
+            "email": "user@example.com"
+          },
           "isCalculated": "false"
         }
       },
@@ -501,13 +513,15 @@
       "CurrentResponse": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "User's name"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email"
+          "user": {
+            "name": {
+              "type": "string",
+              "description": "User's name"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email"
+            }
           },
           "isCalculated": {
             "type": "boolean",
@@ -517,7 +531,7 @@
         "example": {
           "name": "User",
           "email": "user@example.com",
-          "isCalculated": "false"
+          "isCalculated": false
         }
       },
 
@@ -546,7 +560,7 @@
           },
           "desiredWeight": {
             "type": "number",
-            "description": "User's desired weight (cm)"
+            "description": "User's desired weight (kg)"
           },
           "bloodType": {
             "type": "string",
@@ -555,10 +569,10 @@
         },
         "example": {
           "currentWeight": 80,
-          "height": 165,
+          "height": 180,
           "age": 30,
           "desiredWeight": 70,
-          "bloodType": 1
+          "bloodType": "1"
         }
       },
 
@@ -593,25 +607,30 @@
       },
 
       "ProductsResponse": {
-        "type": "object",
-        "properties": {
-          "kcal": {
-            "type": "number",
-            "description": "Product's kcal/100g"
-          },
-          "weight": {
-            "type": "number",
-            "description": "Product's weight (100g)"
-          },
-          "title": {
-            "type": "string",
-            "description": "Product's title"
-          },
-          "id": {
-            "type": "string",
-            "description": "Product's id"
+        "type": "array",
+        "description": "User's list of products detailed information",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kcal": {
+              "type": "number",
+              "description": "Product's kcal/100g"
+            },
+            "weight": {
+              "type": "number",
+              "description": "Product's weight (100g)"
+            },
+            "title": {
+              "type": "string",
+              "description": "Product's title"
+            },
+            "id": {
+              "type": "string",
+              "description": "Product's id"
+            }
           }
         },
+
         "example": [
           {
             "kcal": 342,
