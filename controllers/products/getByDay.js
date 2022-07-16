@@ -5,10 +5,12 @@ const {
 } = require("../../services/calculatorServise");
 
 const getByDay = async (req, res, next) => {
-  const { date } = req.params;
-  const { _id, email, dayNorm, productsNotRecommended } = req.user;
-
   try {
+    const { date } = req.params;
+    // console.log("req.params", req.params);
+    // console.log("req.user", req.user);
+    const { _id, email, dayNorm, productsNotRecommended } = req.user;
+
     const products = await getProductsByDay(_id, date);
     const totalKcalPerDay = await getKcalPerDay(products);
     const { kcalRemain, percentage } = await getRemain(
