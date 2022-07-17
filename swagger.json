@@ -514,13 +514,16 @@
         "type": "object",
         "properties": {
           "user": {
-            "name": {
-              "type": "string",
-              "description": "User's name"
-            },
-            "email": {
-              "type": "string",
-              "description": "User's email"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email"
+              }
             }
           },
           "isCalculated": {
@@ -529,8 +532,10 @@
           }
         },
         "example": {
-          "name": "User",
-          "email": "user@example.com",
+          "user": {
+            "name": "User",
+            "email": "user@example.com"
+          },
           "isCalculated": false
         }
       },
@@ -607,27 +612,24 @@
       },
 
       "ProductsResponse": {
-        "type": "array",
+        "type": "object",
         "description": "User's list of products detailed information",
-        "items": {
-          "type": "object",
-          "properties": {
-            "kcal": {
-              "type": "number",
-              "description": "Product's kcal/100g"
-            },
-            "weight": {
-              "type": "number",
-              "description": "Product's weight (100g)"
-            },
-            "title": {
-              "type": "string",
-              "description": "Product's title"
-            },
-            "id": {
-              "type": "string",
-              "description": "Product's id"
-            }
+        "properties": {
+          "kcal": {
+            "type": "number",
+            "description": "Product's kcal/100g"
+          },
+          "weight": {
+            "type": "number",
+            "description": "Product's weight (100g)"
+          },
+          "title": {
+            "type": "string",
+            "description": "Product's title"
+          },
+          "id": {
+            "type": "string",
+            "description": "Product's id"
           }
         },
 
@@ -674,13 +676,13 @@
       "AddProductResponse": {
         "type": "object",
         "properties": {
-          "date": {
-            "type": "string",
-            "description": "Day's date"
-          },
           "id": {
             "type": "string",
             "description": "Product's id"
+          },
+          "date": {
+            "type": "string",
+            "description": "Day's date"
           },
           "kcal": {
             "type": "number",
@@ -700,8 +702,8 @@
           }
         },
         "example": {
+          "id": "62d35fe67e0e22e229e76c06",
           "date": "2022-07-15",
-          "_id": "5d51694802b2373622ff5548",
           "kcal": 330,
           "weight": 150,
           "title": "Булгур Yelli з білими грибами",
