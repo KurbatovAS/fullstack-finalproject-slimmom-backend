@@ -2,7 +2,6 @@ const { addProduct } = require("../../services/getProducts");
 
 const add = async (req, res, next) => {
   try {
-    console.log("req.user", req.user);
     const { id } = req.user;
 
     const product = await addProduct(id, req.body);
