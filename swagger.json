@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "SlimMom",
     "description": "API documentation for project 'SlimMom'",
     "license": {
@@ -440,23 +440,35 @@
       "RegistrationResponse": {
         "type": "object",
         "properties": {
+          "token": {
+            "type": "string",
+            "description": "User's token"
+          },
           "user": {
-            "name": {
-              "type": "string",
-              "description": "User's name"
-            },
-            "email": {
-              "type": "string",
-              "description": "User's email"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email"
+              }
             }
+          },
+          "isCalculated": {
+            "type": "boolean"
           }
         },
 
         "example": {
+          "token": "JWT",
           "user": {
             "name": "User",
             "email": "user@example.com"
-          }
+          },
+          "isCalculated": "false"
         }
       },
 
@@ -487,13 +499,16 @@
             "description": "User's token"
           },
           "user": {
-            "name": {
-              "type": "string",
-              "description": "User's name"
-            },
-            "email": {
-              "type": "string",
-              "description": "User's email"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email"
+              }
             }
           },
           "isCalculated": {
