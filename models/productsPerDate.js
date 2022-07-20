@@ -4,8 +4,7 @@ const { Schema } = mongoose;
 const dailyNormSchema = new Schema({
   date: {
     type: String,
-    // default: new Date().toLocaleDateString("fr-CA"),
-    default: new Date().toLocaleDateString("cs"),
+    default: new Date().toLocaleDateString("fr-CA"),
   },
 
   title: String,
