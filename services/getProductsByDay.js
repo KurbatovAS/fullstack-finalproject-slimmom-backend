@@ -11,7 +11,8 @@ const getProductsByDay = async (userId, date) => {
     };
   });
   let productsOptimized;
-  if (date === new Date().toLocaleDateString("fr-CA")) {
+  // if (date === new Date().toLocaleDateString("fr-CA")) {
+  if (date === new Date().toLocaleDateString("cs")) {
     productsOptimized = products;
   } else {
     productsOptimized = products.reduce((accum, el) => {
