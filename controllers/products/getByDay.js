@@ -7,8 +7,6 @@ const {
 const getByDay = async (req, res, next) => {
   try {
     const { date } = req.params;
-    // console.log("req.params", req.params);
-    // console.log("req.user", req.user);
     const { _id, email, dayNorm, productsNotRecommended } = req.user;
 
     const products = await getProductsByDay(_id, date);

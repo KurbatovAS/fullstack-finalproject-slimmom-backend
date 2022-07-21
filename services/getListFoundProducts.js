@@ -1,7 +1,6 @@
 const getListFoundProducts = (products, normalizedQuery) =>
   products
     .filter((el) => {
-      // console.log("el.title.ua", el.title.ua);
       const productTitle = el.title.ua.toLowerCase();
       return productTitle.includes(normalizedQuery);
     })
